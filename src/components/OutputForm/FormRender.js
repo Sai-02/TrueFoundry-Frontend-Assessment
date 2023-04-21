@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Input from "./FormComponents/Input";
 import Select from "./FormComponents/Select";
+import FormGroup from "./FormComponents/FormGroup";
 const FormRender = ({ data }) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
@@ -16,6 +17,8 @@ const FormRender = ({ data }) => {
         return <Input val={val} key={val.sort} />;
       case "Select":
         return <Select val={val} key={val.sort} />;
+      case "Group":
+        return <FormGroup val={val} key={val.sort} />;
     }
   };
   return (
