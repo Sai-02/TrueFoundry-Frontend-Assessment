@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import FormRender from "./FormRender";
 import ErrorSection from "../ErrorSection/ErrorSection";
+import FormSubmitModal from "./FormSubmitModal";
 
 const OutputForm = ({ jsonSchema }) => {
   const [parsedSchema, setParsedSchema] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [shouldOpenFormSubmitModal, setShouldOpenFormSubmitModal] =
+    useState(false);
+  const [formSubmitedData, setFormSubmitedData] = useState({});
   const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
@@ -28,10 +32,11 @@ const OutputForm = ({ jsonSchema }) => {
     e.preventDefault();
     let obj = {};
     const formData = new FormData(formRef.current);
-    formData.forEach((val,key) => {
+    formData.forEach((val, key) => {
       obj[key] = val;
     });
-    console.log(obj);
+    setFormSubmitedData(obj);
+    setShouldOpenFormSubmitModal(true);
   };
   return (
     <div className="h-screen p-4 flex flex-col gap-6 ">
@@ -60,6 +65,11 @@ const OutputForm = ({ jsonSchema }) => {
           </form>
         )}
       </div>
+      <FormSubmitModal
+        open={shouldOpenFormSubmitModal}
+        setOpen={setShouldOpenFormSubmitModal}
+        formSubmitedData={formSubmitedData}
+      />
     </div>
   );
 };
