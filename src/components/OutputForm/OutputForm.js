@@ -24,6 +24,15 @@ const OutputForm = ({ jsonSchema }) => {
       }
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let obj = {};
+    const formData = new FormData(formRef.current);
+    formData.forEach((val,key) => {
+      obj[key] = val;
+    });
+    console.log(obj);
+  };
   return (
     <div className="h-screen p-4 flex flex-col gap-6 ">
       <div className="">
@@ -33,13 +42,21 @@ const OutputForm = ({ jsonSchema }) => {
         {isError ? (
           <ErrorSection />
         ) : (
-          <form ref={formRef}>
+          <form ref={formRef} onSubmit={handleSubmit}>
             <FormRender
               data={parsedSchema}
               formRef={formRef}
               parentLabel=""
               reRender={reRender}
             />
+            <div className="mt-4">
+              <button
+                type="submit"
+                className="rounded text-white p-2 bg-blue-500 shadow text-lg text-center w-32"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         )}
       </div>
