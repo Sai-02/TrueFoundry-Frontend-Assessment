@@ -4,7 +4,7 @@ import Select from "./FormComponents/Select";
 import FormGroup from "./FormComponents/FormGroup";
 import Radio from "./FormComponents/Radio";
 import Ignore from "./FormComponents/Ignore";
-const FormRender = ({ data, formRef, parentLabel }) => {
+const FormRender = ({ data, formRef, parentLabel, reRender }) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
     storeSortedData();
@@ -16,9 +16,23 @@ const FormRender = ({ data, formRef, parentLabel }) => {
   const getFormField = (val) => {
     switch (val.uiType) {
       case "Input":
-        return <Input val={val} key={val.sort} parentLabel={parentLabel} />;
+        return (
+          <Input
+            val={val}
+            key={val.sort}
+            parentLabel={parentLabel}
+            reRender={reRender}
+          />
+        );
       case "Select":
-        return <Select val={val} key={val.sort} parentLabel={parentLabel} />;
+        return (
+          <Select
+            val={val}
+            key={val.sort}
+            parentLabel={parentLabel}
+            reRender={reRender}
+          />
+        );
       case "Group":
         return (
           <FormGroup
@@ -26,10 +40,18 @@ const FormRender = ({ data, formRef, parentLabel }) => {
             key={val.sort}
             formRef={formRef}
             parentLabel={parentLabel}
+            reRender={reRender}
           />
         );
       case "Radio":
-        return <Radio val={val} key={val.sort} parentLabel={parentLabel} />;
+        return (
+          <Radio
+            val={val}
+            key={val.sort}
+            parentLabel={parentLabel}
+            reRender={reRender}
+          />
+        );
       case "Ignore":
         return (
           <Ignore
@@ -37,6 +59,7 @@ const FormRender = ({ data, formRef, parentLabel }) => {
             key={val.sort}
             formRef={formRef}
             parentLabel={parentLabel}
+            reRender={reRender}
           />
         );
     }

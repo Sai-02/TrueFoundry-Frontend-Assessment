@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getLabel } from "../../../shared/helper";
 
-const Radio = ({ val, parentLabel }) => {
+const Radio = ({ val, parentLabel, reRender }) => {
   const [radioValue, setRadioValue] = useState(val?.validate?.defaultValue);
 
   return (
@@ -19,6 +19,7 @@ const Radio = ({ val, parentLabel }) => {
                 htmlFor={""}
                 onClick={() => {
                   setRadioValue(option.value);
+                  reRender();
                 }}
                 className="w-full cursor-pointer grow"
               >

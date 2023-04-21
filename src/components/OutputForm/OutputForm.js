@@ -4,11 +4,15 @@ import ErrorSection from "../ErrorSection/ErrorSection";
 
 const OutputForm = ({ jsonSchema }) => {
   const [parsedSchema, setParsedSchema] = useState([]);
+  const [toggle, setToggle] = useState(true);
   const [isError, setIsError] = useState(false);
   const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
   }, [jsonSchema]);
+  const reRender = () => {
+    setToggle((toggle) => !toggle);
+  };
   const handleJsonSchema = () => {
     if (jsonSchema !== "") {
       try {
@@ -30,7 +34,12 @@ const OutputForm = ({ jsonSchema }) => {
           <ErrorSection />
         ) : (
           <form ref={formRef}>
-            <FormRender data={parsedSchema} formRef={formRef} parentLabel="" />
+            <FormRender
+              data={parsedSchema}
+              formRef={formRef}
+              parentLabel=""
+              reRender={reRender}
+            />
           </form>
         )}
       </div>
