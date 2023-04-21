@@ -1,7 +1,8 @@
 import React from "react";
 import FormFieldDescription from "./FormFieldDescription";
+import { getLabel } from "../../../shared/helper";
 
-const Input = ({ val }) => {
+const Input = ({ val, parentLabel }) => {
   const isDescriptionValid = () => {
     return val.description.trim() !== "";
   };
@@ -20,7 +21,7 @@ const Input = ({ val }) => {
           type="text"
           className="border-2 outline-none p-2 rounded"
           placeholder={val?.placeholder}
-          name={val?.jsonKey}
+          name={getLabel(parentLabel, val?.jsonKey)}
           disabled={val?.validate?.immutable}
         />
       </div>

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FormRender from "./FormRender";
 import ErrorSection from "../ErrorSection/ErrorSection";
 
 const OutputForm = ({ jsonSchema }) => {
   const [parsedSchema, setParsedSchema] = useState([]);
   const [isError, setIsError] = useState(false);
+  const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
   }, [jsonSchema]);
@@ -25,7 +26,13 @@ const OutputForm = ({ jsonSchema }) => {
         <h1 className="text-2xl text-blue-900 font-semibold">Form Output</h1>
       </div>
       <div className="">
-        {isError ? <ErrorSection /> : <FormRender data={parsedSchema} />}
+        {isError ? (
+          <ErrorSection />
+        ) : (
+          <form ref={formRef}>
+            <FormRender data={parsedSchema} formRef={formRef} parentLabel="" />
+          </form>
+        )}
       </div>
     </div>
   );

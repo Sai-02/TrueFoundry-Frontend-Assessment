@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { getLabel } from "../../../shared/helper";
 
-const Radio = ({ val }) => {
+const Radio = ({ val, parentLabel }) => {
   const [radioValue, setRadioValue] = useState(val?.validate?.defaultValue);
 
   return (
@@ -26,7 +27,7 @@ const Radio = ({ val }) => {
               <input
                 type="radio"
                 value={option?.value}
-                name={val?.jsonKey}
+                name={getLabel(parentLabel, val?.jsonKey)}
                 checked={radioValue === option?.value ? "checked" : ""}
                 onChange={(e) => {
                   setRadioValue(e.target.value);

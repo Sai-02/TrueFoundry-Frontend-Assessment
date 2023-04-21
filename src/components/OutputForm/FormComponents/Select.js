@@ -1,6 +1,8 @@
 import React from "react";
 import FormFieldDescription from "./FormFieldDescription";
-const Select = ({ val }) => {
+import { getLabel } from "../../../shared/helper";
+
+const Select = ({ val, parentLabel }) => {
   const isDescriptionValid = () => {
     return val.description.trim() !== "";
   };
@@ -17,7 +19,7 @@ const Select = ({ val }) => {
       <select
         className="border-2 outline-none p-2 rounded"
         placeholder={val?.placeholder}
-        name={val?.jsonKey}
+        name={getLabel(parentLabel, val?.jsonKey)}
         disabled={val?.validate?.immutable}
         defaultValue={val?.validate?.defaultValue}
       >
