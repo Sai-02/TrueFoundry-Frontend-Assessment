@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "./FormComponents/Input";
 import Select from "./FormComponents/Select";
 import FormGroup from "./FormComponents/FormGroup";
+import Radio from "./FormComponents/Radio";
 const FormRender = ({ data }) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
@@ -19,6 +20,8 @@ const FormRender = ({ data }) => {
         return <Select val={val} key={val.sort} />;
       case "Group":
         return <FormGroup val={val} key={val.sort} />;
+      case "Radio":
+        return <Radio val={val} key={val.sort} />;
     }
   };
   return (
