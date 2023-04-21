@@ -1,7 +1,5 @@
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Tooltip from "@mui/material/Tooltip";
 import React from "react";
+import FormFieldDescription from "./FormFieldDescription";
 
 const Input = ({ val }) => {
   const isDescriptionValid = () => {
@@ -13,9 +11,7 @@ const Input = ({ val }) => {
         <label htmlFor="" className="flex gap-2 items-center">
           {val?.label}
           {isDescriptionValid() ? (
-            <Tooltip title={val.description}>
-              <FontAwesomeIcon icon={faInfoCircle} className="cursor-pointer" />
-            </Tooltip>
+            <FormFieldDescription description={val.description} />
           ) : (
             ""
           )}
