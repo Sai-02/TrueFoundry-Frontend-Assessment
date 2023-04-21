@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getLabel } from "../../../shared/helper";
 
 const Radio = ({ val, parentLabel, reRender }) => {
   const [radioValue, setRadioValue] = useState(val?.validate?.defaultValue);
+  useEffect(() => {
+    reRender();
+  }, [radioValue]);
 
   return (
     <div className="">

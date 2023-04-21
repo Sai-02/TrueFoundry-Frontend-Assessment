@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import FormRender from "../FormRender";
 const Ignore = ({ val, formRef, parentLabel, reRender }) => {
   const data = new FormData(formRef.current);
-  console.log(data, val?.conditions["jsonKey"]);
+  const [test, setTest] = useState(false);
   useEffect(() => {
-    reRender();
+    setTest(!test);
   }, []);
   const shouldShow = () => {
     return eval(`
