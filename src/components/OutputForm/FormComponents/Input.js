@@ -25,6 +25,7 @@ const Input = ({ val }) => {
           className="border-2 outline-none p-2 rounded"
           placeholder={val?.placeholder}
           name={val?.jsonKey}
+          disabled={val?.validate?.immutable}
         />
       </div>
     </>
