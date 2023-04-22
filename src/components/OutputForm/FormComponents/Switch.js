@@ -1,7 +1,12 @@
 import React from "react";
 import { getLabel } from "../../../shared/helper";
+import RequiredStar from "./RequiredStar";
+import FormFieldDescription from "./FormFieldDescription";
 
 const Switch = ({ val, parentLabel }) => {
+  const isDescriptionValid = () => {
+    return val.description.trim() !== "";
+  };
   return (
     <div className="flex gap-2 items-center">
       <input
@@ -10,7 +15,12 @@ const Switch = ({ val, parentLabel }) => {
         className="w-4 h-4 cursor-pointer"
       />
       <label htmlFor="" className="text-lg">
-        {val?.label}
+        {val?.label} <RequiredStar val={val} />
+        {isDescriptionValid() ? (
+          <FormFieldDescription description={val?.description} />
+        ) : (
+          ""
+        )}
       </label>
     </div>
   );

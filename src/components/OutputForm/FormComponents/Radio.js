@@ -19,6 +19,7 @@ const Radio = ({ val, parentLabel, reRender }) => {
                   : "border-gray-200"
               }  `}
               onClick={() => {
+                if (val?.validate?.immutable) return;
                 setRadioValue(option.value);
                 reRender();
               }}
@@ -34,6 +35,8 @@ const Radio = ({ val, parentLabel, reRender }) => {
                 onChange={(e) => {
                   setRadioValue(e.target.value);
                 }}
+                required={val?.validate?.required}
+                disabled={val?.validate?.immutable}
               />
             </div>
           );
