@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import FormRender from "./FormRender";
 import ErrorSection from "../ErrorSection/ErrorSection";
 import FormSubmitModal from "./FormSubmitModal";
+import BlankForm from "./BlankForm";
 
 const OutputForm = ({ jsonSchema }) => {
   const [parsedSchema, setParsedSchema] = useState([]);
@@ -10,6 +11,7 @@ const OutputForm = ({ jsonSchema }) => {
   const [shouldOpenFormSubmitModal, setShouldOpenFormSubmitModal] =
     useState(false);
   const [formSubmitedData, setFormSubmitedData] = useState({});
+  const [isJsonEmpty, setIsJsonEmpty] = useState(false);
   const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
@@ -26,6 +28,10 @@ const OutputForm = ({ jsonSchema }) => {
       } catch (e) {
         setIsError(true);
       }
+      setIsJsonEmpty(false);
+    } else {
+      setIsJsonEmpty(true);
+      setIsError(false);
     }
   };
   const handleSubmit = (e) => {
@@ -47,26 +53,32 @@ const OutputForm = ({ jsonSchema }) => {
         {isError ? (
           <ErrorSection />
         ) : (
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="grid gap-4 p-3 overflow-auto h-full rounded bg-gray-100"
-          >
-            <FormRender
-              data={parsedSchema}
-              formRef={formRef}
-              parentLabel=""
-              reRender={reRender}
-            />
-            <div className="mt-4">
-              <button
-                type="submit"
-                className="rounded text-white p-2 bg-blue-500 shadow text-lg text-center w-32"
+          <>
+            {isJsonEmpty ? (
+              <BlankForm />
+            ) : (
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="grid gap-4 p-3 overflow-auto h-full rounded bg-gray-100"
               >
-                Submit
-              </button>
-            </div>
-          </form>
+                <FormRender
+                  data={parsedSchema}
+                  formRef={formRef}
+                  parentLabel=""
+                  reRender={reRender}
+                />
+                <div className="mt-4">
+                  <button
+                    type="submit"
+                    className="rounded text-white p-2 bg-blue-500 shadow text-lg text-center w-32"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            )}
+          </>
         )}
       </div>
       <FormSubmitModal
