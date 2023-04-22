@@ -4,6 +4,7 @@ import Select from "./FormComponents/Select";
 import FormGroup from "./FormComponents/FormGroup";
 import Radio from "./FormComponents/Radio";
 import Ignore from "./FormComponents/Ignore";
+import Switch from "./FormComponents/Switch";
 const FormRender = ({ data, formRef, parentLabel, reRender }) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
@@ -55,6 +56,16 @@ const FormRender = ({ data, formRef, parentLabel, reRender }) => {
       case "Ignore":
         return (
           <Ignore
+            val={val}
+            key={val.sort}
+            formRef={formRef}
+            parentLabel={parentLabel}
+            reRender={reRender}
+          />
+        );
+      case "Switch":
+        return (
+          <Switch
             val={val}
             key={val.sort}
             formRef={formRef}
