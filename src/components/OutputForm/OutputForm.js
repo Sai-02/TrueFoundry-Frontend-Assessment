@@ -13,7 +13,7 @@ const OutputForm = ({ jsonSchema }) => {
     useState(false);
   const [formSubmitedData, setFormSubmitedData] = useState({});
   const [isJsonEmpty, setIsJsonEmpty] = useState(false);
-  const [showAdvancedFields, setShowAdvancedFields] = useState(true);
+  const [showAdvancedFields, setShowAdvancedFields] = useState(false);
   const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
@@ -69,7 +69,7 @@ const OutputForm = ({ jsonSchema }) => {
                   formRef={formRef}
                   parentLabel=""
                   reRender={reRender}
-                  required={showAdvancedFields}
+                  showAdvancedFields={showAdvancedFields}
                 />
                 <div className="flex gap-3 items-center">
                   <Switch

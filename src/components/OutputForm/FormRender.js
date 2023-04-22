@@ -5,7 +5,13 @@ import FormGroup from "./FormComponents/FormGroup";
 import Radio from "./FormComponents/Radio";
 import Ignore from "./FormComponents/Ignore";
 import Switch from "./FormComponents/Switch";
-const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
+const FormRender = ({
+  data,
+  formRef,
+  parentLabel,
+  reRender,
+  showAdvancedFields,
+}) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
     storeSortedData();
@@ -14,15 +20,15 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
     try {
       const sd = data.sort((a, b) => a.sort - b.sort);
       setSortedData(sd);
-    } catch (e) {
-    }
+    } catch (e) {}
   };
   const getFormField = (val) => {
     switch (val?.uiType) {
       case "Input":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <Input
                 val={val}
                 key={val.sort}
@@ -37,7 +43,8 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
       case "Select":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <Select
                 val={val}
                 key={val.sort}
@@ -52,7 +59,8 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
       case "Group":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <FormGroup
                 val={val}
                 key={val.sort}
@@ -68,7 +76,8 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
       case "Radio":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <Radio
                 val={val}
                 key={val.sort}
@@ -83,7 +92,8 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
       case "Ignore":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <Ignore
                 val={val}
                 key={val.sort}
@@ -99,7 +109,8 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
       case "Switch":
         return (
           <>
-            {(required && val?.validate?.required) || !required ? (
+            {(!showAdvancedFields && val?.validate?.required) ||
+            showAdvancedFields ? (
               <Switch
                 val={val}
                 key={val.sort}
