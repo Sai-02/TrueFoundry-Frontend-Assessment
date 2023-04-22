@@ -62,7 +62,7 @@ const OutputForm = ({ jsonSchema }) => {
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="grid gap-4 p-3 overflow-auto h-full rounded bg-gray-100"
+                className="grid gap-4 p-3 overflow-auto h-full rounded bg-gray-100 custom-scrollbar"
               >
                 <FormRender
                   data={parsedSchema}

@@ -10,7 +10,7 @@ const JsonInput = ({ jsonSchema, setJsonSchema }) => {
       </div>
       <textarea
         name=""
-        className="grow border-2 border-blue-800 outline-none rounded shadow p-2"
+        className="grow border-2 border-blue-800 outline-none rounded shadow p-2 custom-scrollbar"
         placeholder="Enter JSON Schema Here"
         onChange={(e) => {
           setJsonSchema(e.target.value);
