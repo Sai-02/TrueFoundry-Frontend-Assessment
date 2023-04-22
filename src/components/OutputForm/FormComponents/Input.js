@@ -5,7 +5,7 @@ import RequiredStar from "./RequiredStar";
 
 const Input = ({ val, parentLabel, reRender }) => {
   const isDescriptionValid = () => {
-    return val.description.trim() !== "";
+    return val?.description?.trim() !== "";
   };
   return (
     <>
@@ -14,7 +14,7 @@ const Input = ({ val, parentLabel, reRender }) => {
           {val?.label}
           <RequiredStar val={val} />
           {isDescriptionValid() ? (
-            <FormFieldDescription description={val.description} />
+            <FormFieldDescription description={val?.description} />
           ) : (
             ""
           )}

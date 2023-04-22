@@ -15,7 +15,7 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
     setSortedData(sd);
   };
   const getFormField = (val) => {
-    switch (val.uiType) {
+    switch (val?.uiType) {
       case "Input":
         return (
           <>

@@ -5,7 +5,7 @@ import FormFieldDescription from "./FormFieldDescription";
 
 const Switch = ({ val, parentLabel }) => {
   const isDescriptionValid = () => {
-    return val.description.trim() !== "";
+    return val?.description?.trim() !== "";
   };
   return (
     <div className="flex gap-2 items-center">

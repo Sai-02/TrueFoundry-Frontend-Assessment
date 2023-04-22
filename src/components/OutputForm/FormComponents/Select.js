@@ -5,15 +5,15 @@ import RequiredStar from "./RequiredStar";
 
 const Select = ({ val, parentLabel }) => {
   const isDescriptionValid = () => {
-    return val.description.trim() !== "";
+    return val?.description?.trim() !== "";
   };
   return (
     <div className="grid  gap-4 grid-cols-2 items-center">
-      <label htmlFor={val.jsonKey} className="flex gap-2 items-center">
+      <label htmlFor={val?.jsonKey} className="flex gap-2 items-center">
         {val?.label}
         <RequiredStar val={val} />
         {isDescriptionValid() ? (
-          <FormFieldDescription description={val.description} />
+          <FormFieldDescription description={val?.description} />
         ) : (
           ""
         )}
