@@ -5,7 +5,7 @@ import FormGroup from "./FormComponents/FormGroup";
 import Radio from "./FormComponents/Radio";
 import Ignore from "./FormComponents/Ignore";
 import Switch from "./FormComponents/Switch";
-const FormRender = ({ data, formRef, parentLabel, reRender }) => {
+const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
   const [sortedData, setSortedData] = useState([]);
   useEffect(() => {
     storeSortedData();
@@ -18,60 +18,96 @@ const FormRender = ({ data, formRef, parentLabel, reRender }) => {
     switch (val.uiType) {
       case "Input":
         return (
-          <Input
-            val={val}
-            key={val.sort}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <Input
+                val={val}
+                key={val.sort}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
       case "Select":
         return (
-          <Select
-            val={val}
-            key={val.sort}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <Select
+                val={val}
+                key={val.sort}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
       case "Group":
         return (
-          <FormGroup
-            val={val}
-            key={val.sort}
-            formRef={formRef}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <FormGroup
+                val={val}
+                key={val.sort}
+                formRef={formRef}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
       case "Radio":
         return (
-          <Radio
-            val={val}
-            key={val.sort}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <Radio
+                val={val}
+                key={val.sort}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
       case "Ignore":
         return (
-          <Ignore
-            val={val}
-            key={val.sort}
-            formRef={formRef}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <Ignore
+                val={val}
+                key={val.sort}
+                formRef={formRef}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
       case "Switch":
         return (
-          <Switch
-            val={val}
-            key={val.sort}
-            formRef={formRef}
-            parentLabel={parentLabel}
-            reRender={reRender}
-          />
+          <>
+            {(required && val?.validate?.required) || !required ? (
+              <Switch
+                val={val}
+                key={val.sort}
+                formRef={formRef}
+                parentLabel={parentLabel}
+                reRender={reRender}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         );
     }
   };

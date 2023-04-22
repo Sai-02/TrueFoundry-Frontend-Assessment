@@ -21,6 +21,7 @@ const Ignore = ({ val, formRef, parentLabel, reRender }) => {
           formRef={formRef}
           parentLabel={parentLabel}
           reRender={reRender}
+          required={false}
         />
       ) : (
         ""

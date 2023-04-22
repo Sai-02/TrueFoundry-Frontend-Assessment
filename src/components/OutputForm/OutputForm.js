@@ -3,6 +3,7 @@ import FormRender from "./FormRender";
 import ErrorSection from "../ErrorSection/ErrorSection";
 import FormSubmitModal from "./FormSubmitModal";
 import BlankForm from "./BlankForm";
+import { Switch } from "@mui/material";
 
 const OutputForm = ({ jsonSchema }) => {
   const [parsedSchema, setParsedSchema] = useState([]);
@@ -12,6 +13,7 @@ const OutputForm = ({ jsonSchema }) => {
     useState(false);
   const [formSubmitedData, setFormSubmitedData] = useState({});
   const [isJsonEmpty, setIsJsonEmpty] = useState(false);
+  const [showAdvancedFields, setShowAdvancedFields] = useState(true);
   const formRef = useRef(null);
   useEffect(() => {
     handleJsonSchema();
@@ -67,7 +69,17 @@ const OutputForm = ({ jsonSchema }) => {
                   formRef={formRef}
                   parentLabel=""
                   reRender={reRender}
+                  required={showAdvancedFields}
                 />
+                <div className="flex gap-3 items-center">
+                  <Switch
+                    value={showAdvancedFields}
+                    onClick={() => {
+                      setShowAdvancedFields(!showAdvancedFields);
+                    }}
+                  />
+                  Show Advanced Fields
+                </div>
                 <div className="mt-4">
                   <button
                     type="submit"
