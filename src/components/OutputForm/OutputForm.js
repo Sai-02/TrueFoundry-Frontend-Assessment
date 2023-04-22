@@ -43,7 +43,7 @@ const OutputForm = ({ jsonSchema }) => {
       <div className="">
         <h1 className="text-2xl text-blue-900 font-semibold">Form Output</h1>
       </div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden grow flex flex-col">
         {isError ? (
           <ErrorSection />
         ) : (
