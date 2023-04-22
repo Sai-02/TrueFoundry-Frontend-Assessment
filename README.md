@@ -1,6 +1,6 @@
 # TrueFoundry Frontend Assessment
 
-JSON to form coverter
+JSON to form coverter. [Preview Link](https://truefoundry-frontend-assessment-sai.netlify.app/)
 
 ## Screenshots
 ![Screenshot (1339)](https://user-images.githubusercontent.com/56087847/233798775-5c369ad3-a707-4689-95b8-3461be7fd76d.png)
@@ -15,3 +15,7 @@ JSON to form coverter
 https://user-images.githubusercontent.com/56087847/233799067-e966d2a5-cf9d-4edc-a42d-61b6310b9d52.mp4
 
 
+## Run it locally
+1. Clone the repo
+2. Run `npm install`
+3. Now run `npm start` to run it locally
