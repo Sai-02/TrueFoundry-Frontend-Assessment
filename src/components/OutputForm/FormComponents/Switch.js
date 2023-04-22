@@ -7,7 +7,7 @@ const Switch = ({ val, parentLabel }) => {
       <input
         type="checkbox"
         name={getLabel(parentLabel, val?.jsonKey)}
-        className="w-4 h-4"
+        className="w-4 h-4 cursor-pointer"
       />
       <label htmlFor="" className="text-lg">
         {val?.label}

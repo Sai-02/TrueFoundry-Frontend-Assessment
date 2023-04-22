@@ -8,7 +8,7 @@ const Input = ({ val, parentLabel, reRender }) => {
   };
   return (
     <>
-      <div className="flex gap-4 space-between justify-center items-center px-4">
+      <div className="grid grid-cols-2 gap-4   items-center">
         <label htmlFor="" className="flex gap-2 items-center">
           {val?.label}
           {isDescriptionValid() ? (

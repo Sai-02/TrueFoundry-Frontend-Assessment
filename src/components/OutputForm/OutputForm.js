@@ -39,15 +39,19 @@ const OutputForm = ({ jsonSchema }) => {
     setShouldOpenFormSubmitModal(true);
   };
   return (
-    <div className="h-screen p-4 flex flex-col gap-6 ">
+    <div className="h-screen p-4 flex flex-col gap-6 overflow-hidden">
       <div className="">
         <h1 className="text-2xl text-blue-900 font-semibold">Form Output</h1>
       </div>
-      <div className="">
+      <div className="overflow-hidden">
         {isError ? (
           <ErrorSection />
         ) : (
-          <form ref={formRef} onSubmit={handleSubmit}>
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="grid gap-4 p-3 overflow-auto h-full rounded bg-gray-100"
+          >
             <FormRender
               data={parsedSchema}
               formRef={formRef}

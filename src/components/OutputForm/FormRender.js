@@ -76,7 +76,7 @@ const FormRender = ({ data, formRef, parentLabel, reRender }) => {
     }
   };
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 p-3">
       {sortedData.map((singleData) => getFormField(singleData))}
     </div>
   );

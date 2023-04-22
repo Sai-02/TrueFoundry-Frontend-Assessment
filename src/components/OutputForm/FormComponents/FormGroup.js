@@ -3,8 +3,8 @@ import FormRender from "../FormRender";
 
 const FormGroup = ({ val, formRef, parentLabel, reRender }) => {
   return (
-    <div className="">
-      <h1 className="">{val.label}</h1>
+    <div className="border border-blue-900 p-2">
+      <h1 className="mb-2 text-xl font-semibold text-blue-800">{val.label}</h1>
       <FormRender
         data={val.subParameters}
         formRef={formRef}

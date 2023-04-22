@@ -9,23 +9,21 @@ const Radio = ({ val, parentLabel, reRender }) => {
 
   return (
     <div className="">
-      <hr />
       <div className="grid grid-cols-2 gap-4 mt-2">
         {val?.validate?.options?.map((option, index) => {
           return (
             <div
-              className={`justify-self-center p-2 rounded border cursor-pointer w-full flex ${
-                radioValue === option?.value ? "border-blue-600 shadow" : ""
+              className={`justify-self-center p-2 rounded border-2  cursor-pointer w-full flex ${
+                radioValue === option?.value
+                  ? "border-blue-600 shadow border-2"
+                  : "border-gray-200"
               }  `}
+              onClick={() => {
+                setRadioValue(option.value);
+                reRender();
+              }}
             >
-              <label
-                htmlFor={""}
-                onClick={() => {
-                  setRadioValue(option.value);
-                  reRender();
-                }}
-                className="w-full cursor-pointer grow"
-              >
+              <label htmlFor={""} className="w-full cursor-pointer grow">
                 {option.label}
               </label>
               <input

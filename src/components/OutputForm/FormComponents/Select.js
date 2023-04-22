@@ -7,7 +7,7 @@ const Select = ({ val, parentLabel }) => {
     return val.description.trim() !== "";
   };
   return (
-    <div className="flex gap-4 space-between justify-center items-center px-4">
+    <div className="grid  gap-4 grid-cols-2 items-center">
       <label htmlFor={val.jsonKey} className="flex gap-2 items-center">
         {val?.label}
         {isDescriptionValid() ? (
@@ -17,7 +17,7 @@ const Select = ({ val, parentLabel }) => {
         )}
       </label>
       <select
-        className="border-2 outline-none p-2 rounded"
+        className="border-2 outline-none p-2 px-4 rounded"
         placeholder={val?.placeholder}
         name={getLabel(parentLabel, val?.jsonKey)}
         disabled={val?.validate?.immutable}
