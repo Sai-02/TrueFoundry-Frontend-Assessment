@@ -11,8 +11,11 @@ const FormRender = ({ data, formRef, parentLabel, reRender, required }) => {
     storeSortedData();
   }, [data]);
   const storeSortedData = () => {
-    const sd = data.sort((a, b) => a.sort - b.sort);
-    setSortedData(sd);
+    try {
+      const sd = data.sort((a, b) => a.sort - b.sort);
+      setSortedData(sd);
+    } catch (e) {
+    }
   };
   const getFormField = (val) => {
     switch (val?.uiType) {
